@@ -1,6 +1,5 @@
-import { use, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useState } from "react";
 
 export default function PostDetail() {
   const [post, setPost] = useState({});
