@@ -1,19 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Homepage from "./views/Homepage";
+import Info from "./views/Info";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import Layout from "./views/layouts/Layout";
+import AuthLayout from "./views/layouts/Auth-layout";
+import PostDetail from "./views/Post_Detail";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div> 
-        
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route path="info" element={<Info />} />
+          <Route path="posts/:id" element={<PostDetail />} />
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
